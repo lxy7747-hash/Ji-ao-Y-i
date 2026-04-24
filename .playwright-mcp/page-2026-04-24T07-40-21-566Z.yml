@@ -1,0 +1,197 @@
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - combobox [ref=e8]:
+          - option "BTCUSDT" [selected]
+          - option "ETHUSDT"
+          - option "SOLUSDT"
+          - option "BNBUSDT"
+          - option "XRPUSDT"
+          - option "DOGEUSDT"
+        - generic [ref=e9]:
+          - button "5m" [ref=e10] [cursor=pointer]
+          - button "15m" [ref=e11] [cursor=pointer]
+          - button "1h" [ref=e12] [cursor=pointer]
+          - button "4h" [ref=e13] [cursor=pointer]
+          - button "1d" [ref=e14] [cursor=pointer]
+        - button "刷新中" [disabled] [ref=e15]
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]: 当前价格
+          - generic [ref=e19]: "0"
+        - generic [ref=e20]:
+          - generic [ref=e21]: 24h 涨跌
+          - generic [ref=e22]: +0.00%
+        - generic [ref=e23]:
+          - generic [ref=e24]: 24h 成交额
+          - generic [ref=e25]: "0"
+        - generic [ref=e26]:
+          - generic [ref=e27]: 资金费率 / 下次
+          - generic [ref=e28]: +0.00% · --
+  - main [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - heading "K线 / 成交量 / EMA" [level=2] [ref=e34]
+          - generic [ref=e35]:
+            - generic [ref=e36]: EMA20
+            - generic [ref=e37]: EMA60
+            - generic [ref=e38]: Volume
+        - table [ref=e41]:
+          - row [ref=e42]:
+            - cell
+            - cell [ref=e43]:
+              - link "Charting by TradingView" [ref=e47] [cursor=pointer]:
+                - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+                - img [ref=e48]
+            - cell
+          - row [ref=e52]:
+            - cell
+            - cell [ref=e53]
+            - cell
+        - generic [ref=e57]: 等待行情数据
+      - complementary [ref=e58]:
+        - generic [ref=e59]:
+          - heading "技术指标" [level=2] [ref=e60]
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - generic [ref=e63]: EMA20
+              - generic [ref=e64]: "0"
+            - generic [ref=e65]:
+              - generic [ref=e66]: EMA60
+              - generic [ref=e67]: "0"
+            - generic [ref=e68]:
+              - generic [ref=e69]: EMA120
+              - generic [ref=e70]: "0"
+            - generic [ref=e71]:
+              - generic [ref=e72]: RSI
+              - generic [ref=e73]: "50"
+            - generic [ref=e74]:
+              - generic [ref=e75]: MACD 柱
+              - generic [ref=e76]: "0"
+            - generic [ref=e77]:
+              - generic [ref=e78]: ATR
+              - generic [ref=e79]: "0"
+          - generic [ref=e80]:
+            - generic [ref=e81]: 无数据
+            - generic [ref=e82]: 无数据
+            - generic [ref=e83]: 无数据
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - heading "多空评分" [level=2] [ref=e86]
+            - generic [ref=e87]: 观望
+          - generic [ref=e88]:
+            - generic [ref=e90]:
+              - generic [ref=e91]: 多头
+              - generic [ref=e92]: "0"
+            - generic [ref=e95]:
+              - generic [ref=e96]: 空头
+              - generic [ref=e97]: "0"
+            - generic [ref=e99]:
+              - generic [ref=e100]: 置信度
+              - generic [ref=e101]: 0%
+          - list [ref=e102]:
+            - listitem [ref=e103]: 等待行情数据加载
+        - generic [ref=e104]:
+          - generic [ref=e105]:
+            - heading "多周期共振" [level=2] [ref=e106]
+            - generic [ref=e107]: 0%
+          - paragraph [ref=e108]: 等待多周期数据
+      - generic [ref=e109]:
+        - generic [ref=e110]:
+          - heading "简易回测" [level=2] [ref=e111]
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - generic [ref=e114]: 交易次数
+              - generic [ref=e115]: "0"
+            - generic [ref=e116]:
+              - generic [ref=e117]: 胜率
+              - generic [ref=e118]: 0%
+            - generic [ref=e119]:
+              - generic [ref=e120]: 累计收益
+              - generic [ref=e121]: 0%
+            - generic [ref=e122]:
+              - generic [ref=e123]: 最大回撤
+              - generic [ref=e124]: 0%
+            - generic [ref=e125]:
+              - generic [ref=e126]: 盈亏因子
+              - generic [ref=e127]: "0"
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - heading "交易计划" [level=2] [ref=e130]
+            - generic [ref=e131]: 观望
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: 入场条件
+              - generic [ref=e135]: 等待趋势、动能与成交量形成同向确认
+            - generic [ref=e136]:
+              - generic [ref=e137]: 入场区间
+              - generic [ref=e138]: 暂不追单
+            - generic [ref=e139]:
+              - generic [ref=e140]: 止损
+              - generic [ref=e141]: "0"
+            - generic [ref=e142]:
+              - generic [ref=e143]: 止盈
+              - generic [ref=e144]: "0"
+            - generic [ref=e145]:
+              - generic [ref=e146]: 仓位建议
+              - generic [ref=e147]: 观望
+            - generic [ref=e148]:
+              - generic [ref=e149]: 失效条件
+              - generic [ref=e150]: 评分差距小于 15 分或接口数据异常
+          - list [ref=e151]:
+            - listitem [ref=e152]: 不生成明确计划时，不建议开仓
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - heading "风控计算器" [level=2] [ref=e155]
+            - button "重置" [ref=e156] [cursor=pointer]
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - text: 账户权益 USDT
+              - spinbutton "账户权益 USDT" [ref=e159]: "1000"
+            - generic [ref=e160]:
+              - text: 单笔风险 %
+              - spinbutton "单笔风险 %" [ref=e161]: "1"
+            - generic [ref=e162]:
+              - text: 杠杆倍数
+              - spinbutton "杠杆倍数" [ref=e163]: "5"
+          - generic [ref=e164]:
+            - generic [ref=e165]:
+              - generic [ref=e166]: 最大亏损
+              - generic [ref=e167]: "0"
+            - generic [ref=e168]:
+              - generic [ref=e169]: 仓位价值
+              - generic [ref=e170]: "0"
+            - generic [ref=e171]:
+              - generic [ref=e172]: 保证金
+              - generic [ref=e173]: "0"
+            - generic [ref=e174]:
+              - generic [ref=e175]: 盈亏比
+              - generic [ref=e176]: "0"
+            - generic [ref=e177]:
+              - generic [ref=e178]: 预估强平
+              - generic [ref=e179]: "0"
+      - generic [ref=e180]:
+        - heading "支撑压力" [level=2] [ref=e181]
+        - generic [ref=e182]:
+          - generic [ref=e183]:
+            - generic [ref=e184]: 支撑位
+            - generic [ref=e186]: 暂无有效支撑
+          - generic [ref=e187]:
+            - generic [ref=e188]: 压力位
+            - generic [ref=e190]: 暂无有效压力
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - generic [ref=e193]:
+            - heading "分析记录" [level=2] [ref=e194]
+            - generic [ref=e195]:
+              - button "保存当前" [ref=e196] [cursor=pointer]
+              - button "导出 Markdown" [ref=e197] [cursor=pointer]
+          - generic [ref=e199]: 暂无记录
+        - generic [ref=e200]:
+          - heading "复盘日志" [level=2] [ref=e201]
+          - generic [ref=e202]:
+            - textbox "标题" [ref=e203]
+            - textbox "记录交易想法、执行结果或复盘结论" [ref=e204]
+            - button "保存复盘" [ref=e205] [cursor=pointer]

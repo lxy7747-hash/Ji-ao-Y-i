@@ -1,0 +1,166 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - combobox [ref=e7]:
+          - option "BTCUSDT" [selected]
+          - option "ETHUSDT"
+          - option "SOLUSDT"
+          - option "BNBUSDT"
+          - option "XRPUSDT"
+          - option "DOGEUSDT"
+        - generic [ref=e8]:
+          - button "5m" [ref=e9] [cursor=pointer]
+          - button "15m" [ref=e10] [cursor=pointer]
+          - button "1h" [ref=e11] [cursor=pointer]
+          - button "4h" [ref=e12] [cursor=pointer]
+          - button "1d" [ref=e13] [cursor=pointer]
+        - button "刷新中" [disabled] [ref=e14]
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]: 当前价格
+          - generic [ref=e18]: "0"
+        - generic [ref=e19]:
+          - generic [ref=e20]: 24h 涨跌
+          - generic [ref=e21]: +0.00%
+        - generic [ref=e22]:
+          - generic [ref=e23]: 24h 成交额
+          - generic [ref=e24]: "0"
+        - generic [ref=e25]:
+          - generic [ref=e26]: 资金费率 / 下次
+          - generic [ref=e27]:
+            - text: +0.00%
+            - generic [ref=e28]: "--"
+  - main [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - heading "K线与 EMA" [level=2] [ref=e34]
+            - generic [ref=e35]:
+              - generic [ref=e36]: EMA20
+              - generic [ref=e37]: EMA60
+          - table [ref=e40]:
+            - row [ref=e41]:
+              - cell
+              - cell [ref=e42]:
+                - link "Charting by TradingView" [ref=e46] [cursor=pointer]:
+                  - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+                  - img [ref=e47]
+              - cell [ref=e51]
+            - row [ref=e55]:
+              - cell
+              - cell [ref=e56]
+              - cell [ref=e60]
+          - generic [ref=e63]: 等待行情数据
+        - generic [ref=e64]:
+          - heading "成交量" [level=2] [ref=e65]
+          - table [ref=e68]:
+            - row [ref=e69]:
+              - cell
+              - cell [ref=e70]:
+                - link "Charting by TradingView" [ref=e74] [cursor=pointer]:
+                  - /url: https://www.tradingview.com/?utm_medium=lwc-link&utm_campaign=lwc-chart&utm_source=localhost/
+                  - img [ref=e75]
+              - cell [ref=e79]
+            - row [ref=e83]:
+              - cell
+              - cell [ref=e84]
+              - cell [ref=e88]
+      - complementary [ref=e91]:
+        - generic [ref=e92]:
+          - heading "技术指标" [level=2] [ref=e93]
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: EMA20
+              - generic [ref=e97]: "0"
+            - generic [ref=e98]:
+              - generic [ref=e99]: EMA60
+              - generic [ref=e100]: "0"
+            - generic [ref=e101]:
+              - generic [ref=e102]: EMA120
+              - generic [ref=e103]: "0"
+            - generic [ref=e104]:
+              - generic [ref=e105]: RSI
+              - generic [ref=e106]: "50"
+            - generic [ref=e107]:
+              - generic [ref=e108]: MACD 柱
+              - generic [ref=e109]: "0"
+            - generic [ref=e110]:
+              - generic [ref=e111]: ATR
+              - generic [ref=e112]: "0"
+          - generic [ref=e113]:
+            - generic [ref=e114]: 无数据
+            - generic [ref=e115]: 无数据
+            - generic [ref=e116]: 无数据
+        - generic [ref=e117]:
+          - generic [ref=e118]:
+            - heading "多空评分" [level=2] [ref=e119]
+            - generic [ref=e120]: 观望
+          - generic [ref=e121]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: 多头
+              - generic [ref=e125]: "0"
+            - generic [ref=e128]:
+              - generic [ref=e129]: 空头
+              - generic [ref=e130]: "0"
+            - generic [ref=e132]:
+              - generic [ref=e133]: 置信度
+              - generic [ref=e134]: 0%
+          - list [ref=e135]:
+            - listitem [ref=e136]: 等待行情数据加载
+    - generic [ref=e137]:
+      - generic [ref=e138]:
+        - heading "风控计算器" [level=2] [ref=e139]
+        - button "重置" [ref=e140] [cursor=pointer]
+      - generic [ref=e141]:
+        - generic [ref=e142]:
+          - text: 账户权益 USDT
+          - spinbutton "账户权益 USDT" [ref=e143]: "1000"
+        - generic [ref=e144]:
+          - text: 单笔风险 %
+          - spinbutton "单笔风险 %" [ref=e145]: "1"
+        - generic [ref=e146]:
+          - text: 杠杆倍数
+          - spinbutton "杠杆倍数" [ref=e147]: "5"
+      - generic [ref=e148]:
+        - generic [ref=e149]:
+          - generic [ref=e150]: 最大亏损
+          - generic [ref=e151]: "0"
+        - generic [ref=e152]:
+          - generic [ref=e153]: 仓位价值
+          - generic [ref=e154]: "0"
+        - generic [ref=e155]:
+          - generic [ref=e156]: 保证金
+          - generic [ref=e157]: "0"
+        - generic [ref=e158]:
+          - generic [ref=e159]: 盈亏比
+          - generic [ref=e160]: "0"
+        - generic [ref=e161]:
+          - generic [ref=e162]: 预估强平
+          - generic [ref=e163]: "0"
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - heading "交易计划" [level=2] [ref=e166]
+        - generic [ref=e167]: 观望
+      - generic [ref=e168]:
+        - generic [ref=e169]:
+          - generic [ref=e170]: 入场条件
+          - generic [ref=e171]: 等待趋势、动能与成交量形成同向确认
+        - generic [ref=e172]:
+          - generic [ref=e173]: 入场区间
+          - generic [ref=e174]: 暂不追单
+        - generic [ref=e175]:
+          - generic [ref=e176]: 止损
+          - generic [ref=e177]: "0"
+        - generic [ref=e178]:
+          - generic [ref=e179]: 止盈
+          - generic [ref=e180]: "0"
+        - generic [ref=e181]:
+          - generic [ref=e182]: 仓位建议
+          - generic [ref=e183]: 观望
+        - generic [ref=e184]:
+          - generic [ref=e185]: 失效条件
+          - generic [ref=e186]: 评分差距小于 15 分或接口数据异常
+      - list [ref=e187]:
+        - listitem [ref=e188]: 不生成明确计划时，不建议开仓
