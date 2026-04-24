@@ -64,29 +64,31 @@ watch(() => [market.symbol, market.interval], refresh)
           {{ market.error }}。请确认网络可以访问 Binance Public API。
         </div>
 
-        <div class="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_720px] gap-2">
-          <div class="min-h-0">
-            <KlineChart :klines="market.klines" />
+        <div class="grid h-full min-h-0 grid-cols-[minmax(0,1fr)_420px] gap-2">
+          <div class="grid min-h-0 grid-rows-[minmax(0,1fr)_260px] gap-2">
+            <div class="min-h-0">
+              <KlineChart :klines="market.klines" />
+            </div>
+            <div class="grid min-h-0 grid-cols-4 gap-2">
+              <ScorePanel :analysis="analysis.analysis" />
+              <ConsensusPanel :consensus="market.consensus" />
+              <RiskCalculator
+                :balance="risk.balance"
+                :risk-percent="risk.riskPercent"
+                :leverage="risk.leverage"
+                :result="risk.result"
+                @update:balance="risk.balance = $event"
+                @update:risk-percent="risk.riskPercent = $event"
+                @update:leverage="risk.leverage = $event"
+                @calculate="risk.calculateRisk"
+                @reset="risk.resetRisk"
+              />
+              <StructurePanel :structure="structure" />
+            </div>
           </div>
 
-          <aside class="grid min-h-0 grid-cols-2 grid-rows-[minmax(0,0.9fr)_minmax(210px,0.78fr)_240px] gap-2 overflow-hidden">
-            <ScorePanel :analysis="analysis.analysis" />
-            <ConsensusPanel :consensus="market.consensus" />
-            <div class="col-span-2 min-h-0">
-              <TradePlanPanel :plan="plan" />
-            </div>
-            <RiskCalculator
-              :balance="risk.balance"
-              :risk-percent="risk.riskPercent"
-              :leverage="risk.leverage"
-              :result="risk.result"
-              @update:balance="risk.balance = $event"
-              @update:risk-percent="risk.riskPercent = $event"
-              @update:leverage="risk.leverage = $event"
-              @calculate="risk.calculateRisk"
-              @reset="risk.resetRisk"
-            />
-            <StructurePanel :structure="structure" />
+          <aside class="min-h-0 overflow-hidden">
+            <TradePlanPanel :plan="plan" />
           </aside>
         </div>
       </main>

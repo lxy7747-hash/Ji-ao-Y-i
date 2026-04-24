@@ -12,12 +12,15 @@ let candleSeries: ISeriesApi<'Candlestick'> | null = null
 let volumeSeries: ISeriesApi<'Histogram'> | null = null
 let ema20Series: ISeriesApi<'Line'> | null = null
 let ema60Series: ISeriesApi<'Line'> | null = null
+let resizeObserver: ResizeObserver | null = null
 
 const hasData = computed(() => props.klines.length > 0)
 
 function resizeChart() {
   if (!chart || !container.value) return
-  chart.applyOptions({ width: container.value.clientWidth, height: container.value.clientHeight })
+  const { clientWidth, clientHeight } = container.value
+  if (!clientWidth || !clientHeight) return
+  chart.applyOptions({ width: clientWidth, height: clientHeight })
 }
 
 function renderChart() {
@@ -40,6 +43,7 @@ function renderChart() {
   })))
   ema20Series.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: ema20[index] })))
   ema60Series.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: ema60[index] })))
+  resizeChart()
   chart.timeScale().fitContent()
 }
 
@@ -72,6 +76,9 @@ onMounted(async () => {
   chart.priceScale('').applyOptions({ scaleMargins: { top: 0.78, bottom: 0 } })
   ema20Series = chart.addLineSeries({ color: '#22d3ee', lineWidth: 2, priceLineVisible: false })
   ema60Series = chart.addLineSeries({ color: '#fbbf24', lineWidth: 2, priceLineVisible: false })
+  resizeObserver = new ResizeObserver(() => requestAnimationFrame(resizeChart))
+  resizeObserver.observe(container.value)
+  requestAnimationFrame(resizeChart)
   renderChart()
   window.addEventListener('resize', resizeChart)
 })
@@ -80,6 +87,7 @@ watch(() => props.klines, renderChart, { deep: true })
 
 onBeforeUnmount(() => {
   window.removeEventListener('resize', resizeChart)
+  resizeObserver?.disconnect()
   chart?.remove()
 })
 </script>
@@ -94,7 +102,7 @@ onBeforeUnmount(() => {
         <span class="text-slate-300">Volume</span>
       </div>
     </div>
-    <div ref="container" class="min-h-0 flex-1 w-full" />
+    <div ref="container" class="min-h-0 w-full flex-1" />
     <div v-if="!hasData" class="flex min-h-0 flex-1 items-center justify-center text-sm text-slate-500">等待行情数据</div>
   </section>
 </template>
