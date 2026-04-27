@@ -5,9 +5,9 @@ export interface MacdPoint {
 }
 
 export interface IndicatorSnapshot {
-  ema20: number
-  ema60: number
-  ema120: number
+  vegasUpper: number
+  vegasLower: number
+  vegasMid: number
   rsi: number
   macd: MacdPoint
   atr: number

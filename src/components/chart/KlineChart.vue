@@ -10,8 +10,8 @@ const container = ref<HTMLDivElement | null>(null)
 let chart: IChartApi | null = null
 let candleSeries: ISeriesApi<'Candlestick'> | null = null
 let volumeSeries: ISeriesApi<'Histogram'> | null = null
-let ema20Series: ISeriesApi<'Line'> | null = null
-let ema60Series: ISeriesApi<'Line'> | null = null
+let vegasUpperSeries: ISeriesApi<'Line'> | null = null
+let vegasLowerSeries: ISeriesApi<'Line'> | null = null
 let resizeObserver: ResizeObserver | null = null
 
 const hasData = computed(() => props.klines.length > 0)
@@ -24,10 +24,12 @@ function resizeChart() {
 }
 
 function renderChart() {
-  if (!chart || !candleSeries || !volumeSeries || !ema20Series || !ema60Series) return
+  if (!chart || !candleSeries || !volumeSeries || !vegasUpperSeries || !vegasLowerSeries) return
   const closes = props.klines.map((item) => item.close)
-  const ema20 = ema(closes, 20)
-  const ema60 = ema(closes, 60)
+  const ema144 = ema(closes, 144)
+  const ema169 = ema(closes, 169)
+  const vegasUpper = ema144.map((value, index) => Math.max(value, ema169[index] ?? value))
+  const vegasLower = ema144.map((value, index) => Math.min(value, ema169[index] ?? value))
 
   candleSeries.setData(props.klines.map((item) => ({
     time: item.time as UTCTimestamp,
@@ -41,8 +43,8 @@ function renderChart() {
     value: item.volume,
     color: item.close >= item.open ? '#34d39966' : '#fb718566',
   })))
-  ema20Series.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: ema20[index] })))
-  ema60Series.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: ema60[index] })))
+  vegasUpperSeries.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: vegasUpper[index] })))
+  vegasLowerSeries.setData(props.klines.map((item, index) => ({ time: item.time as UTCTimestamp, value: vegasLower[index] })))
   resizeChart()
   chart.timeScale().fitContent()
 }
@@ -74,8 +76,8 @@ onMounted(async () => {
     priceScaleId: '',
   })
   chart.priceScale('').applyOptions({ scaleMargins: { top: 0.78, bottom: 0 } })
-  ema20Series = chart.addLineSeries({ color: '#22d3ee', lineWidth: 2, priceLineVisible: false })
-  ema60Series = chart.addLineSeries({ color: '#fbbf24', lineWidth: 2, priceLineVisible: false })
+  vegasUpperSeries = chart.addLineSeries({ color: '#22d3ee', lineWidth: 2, priceLineVisible: false })
+  vegasLowerSeries = chart.addLineSeries({ color: '#fbbf24', lineWidth: 2, priceLineVisible: false })
   resizeObserver = new ResizeObserver(() => requestAnimationFrame(resizeChart))
   resizeObserver.observe(container.value)
   requestAnimationFrame(resizeChart)
@@ -95,10 +97,10 @@ onBeforeUnmount(() => {
 <template>
   <section class="panel flex h-full flex-col rounded p-3">
     <div class="mb-2 flex items-center justify-between">
-      <h2 class="text-sm font-semibold text-slate-100">K线 / 成交量 / EMA</h2>
+      <h2 class="text-sm font-semibold text-slate-100">K线 / 成交量 / 维加斯通道</h2>
       <div class="flex gap-3 text-xs text-slate-400">
-        <span class="text-cyan-300">EMA20</span>
-        <span class="text-amber-300">EMA60</span>
+        <span class="text-cyan-300">Vegas Upper</span>
+        <span class="text-amber-300">Vegas Lower</span>
         <span class="text-slate-300">Volume</span>
       </div>
     </div>

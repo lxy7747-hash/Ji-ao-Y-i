@@ -58,15 +58,16 @@ export function atr(klines: Kline[], period = 14): number {
 export function calculateIndicators(klines: Kline[]): IndicatorSnapshot {
   const closes = klines.map((item) => item.close)
   const volumes = klines.map((item) => item.volume)
-  const ema20 = ema(closes, 20).at(-1) ?? 0
-  const ema60 = ema(closes, 60).at(-1) ?? 0
-  const ema120 = ema(closes, 120).at(-1) ?? 0
+  const ema144 = ema(closes, 144).at(-1) ?? 0
+  const ema169 = ema(closes, 169).at(-1) ?? 0
   const recentVolumes = volumes.slice(-20)
+  const vegasUpper = Math.max(ema144, ema169)
+  const vegasLower = Math.min(ema144, ema169)
 
   return {
-    ema20: round(ema20, 2),
-    ema60: round(ema60, 2),
-    ema120: round(ema120, 2),
+    vegasUpper: round(vegasUpper, 2),
+    vegasLower: round(vegasLower, 2),
+    vegasMid: round((vegasUpper + vegasLower) / 2, 2),
     rsi: rsi(closes),
     macd: macd(closes),
     atr: atr(klines),

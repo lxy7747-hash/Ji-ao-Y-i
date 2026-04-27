@@ -9,9 +9,9 @@ defineProps<{ indicators: IndicatorSnapshot; trend: string; momentum: string; vo
   <section class="panel rounded-lg p-4">
     <h2 class="text-base font-semibold text-slate-100">技术指标</h2>
     <div class="mt-4 grid grid-cols-2 gap-3">
-      <div><div class="metric-label">EMA20</div><div class="metric-value">{{ formatPrice(indicators.ema20) }}</div></div>
-      <div><div class="metric-label">EMA60</div><div class="metric-value">{{ formatPrice(indicators.ema60) }}</div></div>
-      <div><div class="metric-label">EMA120</div><div class="metric-value">{{ formatPrice(indicators.ema120) }}</div></div>
+      <div><div class="metric-label">Vegas 上轨</div><div class="metric-value">{{ formatPrice(indicators.vegasUpper) }}</div></div>
+      <div><div class="metric-label">Vegas 下轨</div><div class="metric-value">{{ formatPrice(indicators.vegasLower) }}</div></div>
+      <div><div class="metric-label">Vegas 中轴</div><div class="metric-value">{{ formatPrice(indicators.vegasMid) }}</div></div>
       <div><div class="metric-label">RSI</div><div class="metric-value">{{ indicators.rsi }}</div></div>
       <div><div class="metric-label">MACD 柱</div><div class="metric-value">{{ indicators.macd.histogram }}</div></div>
       <div><div class="metric-label">ATR</div><div class="metric-value">{{ formatPrice(indicators.atr) }}</div></div>

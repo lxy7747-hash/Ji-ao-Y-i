@@ -5,9 +5,9 @@ import type { AnalysisResult, IndicatorSnapshot } from '../types/analysis'
 import type { Kline } from '../types/market'
 
 const emptyIndicators = (): IndicatorSnapshot => ({
-  ema20: 0,
-  ema60: 0,
-  ema120: 0,
+  vegasUpper: 0,
+  vegasLower: 0,
+  vegasMid: 0,
   rsi: 50,
   macd: { macd: 0, signal: 0, histogram: 0 },
   atr: 0,

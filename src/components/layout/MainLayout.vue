@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, watch } from 'vue'
 import HeaderBar from './HeaderBar.vue'
 import ConsensusPanel from '../analysis/ConsensusPanel.vue'
 import ScorePanel from '../analysis/ScorePanel.vue'
@@ -37,9 +37,14 @@ onMounted(async () => {
   market.hydrate()
   risk.hydrate()
   await refresh()
+  market.startRealtime()
 })
 
 watch(() => [market.symbol, market.interval], refresh)
+
+onBeforeUnmount(() => {
+  market.stopRealtime()
+})
 </script>
 
 <template>
@@ -49,10 +54,13 @@ watch(() => [market.symbol, market.interval], refresh)
         :symbol="market.symbol"
         :interval="market.interval"
         :price="market.price"
+        :price-updated-at="market.priceUpdatedAt"
+        :ticker-connected="market.tickerConnected"
         :change-percent="market.ticker?.priceChangePercent ?? 0"
         :quote-volume="market.ticker?.quoteVolume ?? 0"
         :funding-rate="market.funding?.fundingRate ?? 0"
         :next-funding-time="market.funding?.nextFundingTime ?? 0"
+        :funding-countdown-ms="market.fundingCountdownMs"
         :loading="market.loading"
         @update:symbol="market.setSymbol"
         @update:interval="market.setInterval"
